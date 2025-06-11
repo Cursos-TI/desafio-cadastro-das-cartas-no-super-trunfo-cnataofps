@@ -10,17 +10,18 @@ int main(){
     char estado;
     char codigo[4];
     char nomeCidade[15];
-    float populacao;
+    int populacao;
     float area;
     float pib;
     int pontoTuristico;
+    int temp_char;
 
     // Variaveis para segunda carta 
 
     char estado2;
     char codigo2[4];
     char nomeCidade2[15];
-    float populacao2;
+    int populacao2;
     float area2;
     float pib2;
     int pontoTuristico2;
@@ -30,53 +31,67 @@ int main(){
     printf("Numero da Carta 1:\n");
     
 
-    printf("Informe uma letra: \n");
-    scanf(" %c", &estado);  
+    printf("Informe uma letra para o Estado: \n");
+    scanf(" %c", &estado);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
-    printf("Informe um código: \n");
-    scanf("%s", codigo);
+    printf("Informe um código(ex: A01): \n");
+    scanf("%3s", codigo);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
-    printf("Nome da cidade: \n");
-    scanf("%s", nomeCidade);
+    printf("Nome da cidade(sem espaços): \n");
+    scanf("%14s", nomeCidade);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Populacao: \n");
-    scanf(" %f", &populacao);  
+    scanf(" %d", &populacao);  
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Area: \n");
-    scanf(" %f", &area);
+    scanf("%f", &area);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Pib: \n");
-    scanf(" %f", &pib);
+    scanf("%f", &pib);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Numero de Pontos Turisticos: \n");
     scanf(" %d", &pontoTuristico);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
+
 
     // Solicitacoes de dados para segunda carta
 
     printf("Numero da Carta 2:\n");
     
 
-    printf("Informe uma letra: \n");
-    scanf(" %c", &estado2);  
+    printf("Informe uma letra para o Estado: \n");
+    scanf("%c", &estado2);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
-    printf("Informe um código: \n");
-    scanf("%s", codigo2);
+    printf("Informe um código(ex: A01): \n");
+    scanf("%3s", codigo2);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
-    printf("Nome da cidade: \n");
-    scanf("%s", nomeCidade2);
+    printf("Nome da cidade(sem espaços): \n");
+    scanf("%14s", nomeCidade2);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Populacao: \n");
-    scanf(" %f", &populacao2);  
+    scanf(" %d", &populacao2);  
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Area: \n");
-    scanf(" %f", &area2);
+    scanf("%f", &area2);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Pib: \n");
-    scanf(" %f", &pib2);
+    scanf("%f", &pib2);
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Numero de Pontos Turisticos: \n");
     scanf(" %d", &pontoTuristico2);
-
+    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
     
            
        
@@ -85,22 +100,22 @@ int main(){
     printf("\nCarta 1:\n");
     printf("Estado: %c\n", estado);
     printf("Codigo: %s\n", codigo);
-    printf("Nome da Cidade: %s\n", codigo);
-    printf("Populacao: %f\n", populacao);
-    printf("Area: %f\n", area);
-    printf("Pib: %f\n", pib);
-    printf("Populacao: %d\n", pontoTuristico);
+    printf("Nome da Cidade: %s\n", nomeCidade2);
+    printf("Populacao: %d\n", populacao);
+    printf("Area: %.2f km²\n", area);
+    printf("Pib: %.2f bilhões de reais\n", pib);
+    printf("Pontos Turisticos: %d\n", pontoTuristico);
 
     // Exibição dos Dados da segunda cartas:
 
-    printf("\nCarta 2:\n");
+    printf("\nCarta 1:\n");
     printf("Estado: %c\n", estado2);
     printf("Codigo: %s\n", codigo2);
-    printf("Nome da Cidade: %s\n", codigo2);
-    printf("Populacao: %f\n", populacao2);
-    printf("Area: %f\n", area2);
-    printf("Pib: %f\n", pib2);
-    printf("Populacao: %d\n", pontoTuristico2);
+    printf("Nome da Cidade: %s\n", nomeCidade2);
+    printf("Populacao: %d\n", populacao2);
+    printf("Area: %.2f km²\n", area2);
+    printf("Pib: %.2f bilhões de reais\n", pib2);
+    printf("Pontos Turisticos: %d\n", pontoTuristico2);
     
 
     return 0;
