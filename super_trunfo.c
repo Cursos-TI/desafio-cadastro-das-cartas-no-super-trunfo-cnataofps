@@ -3,7 +3,7 @@
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
 
-int main(){
+int main() {
 
     
     // Variaveis para primeira carta 
@@ -63,21 +63,13 @@ int main(){
     scanf(" %d", &pontoTuristico);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
-    printf("Numero de Densidade Populacional: \n");
-    scanf(" %d", &densidadepopulacional);
-    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
-
-    printf("Numero do Pib per capita: \n");
-    scanf(" %d", &pibpercapita);
-    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
-
-    // Calcular densidade populacional e PIB per capita
+    
+    // Calcular densidade populacional e PIB per capita CARTA 1
 
     densidadepopulacional = populacao / area;
-    pibpercapita = pib / populacao;
+    pibpercapita = (pib * 1000000000) / populacao;
 
-    densidadepopulacional2 = populacao2 / area2;
-    pibpercapita2 = pib2 / populacao2;
+    
 
 
     // Solicitacoes de dados para segunda carta
@@ -113,17 +105,14 @@ int main(){
     scanf(" %d", &pontoTuristico2);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
-    printf("Numero de Densidade Populacional: \n");
-    scanf(" %d", &densidadepopulacional2);
-    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
+    // Calcular densidade populacional e PIB per capita CARTA 2
 
-    printf("Numero do Pib per capita: \n");
-    scanf(" %d", &pibpercapita2);
-    while ((temp_char = getchar()) != '\n' && temp_char != EOF);
-    
-           
-       
-    // Exibição dos Dados da primeira cartas:
+    densidadepopulacional2 = populacao2 / area2;
+    pibpercapita2 = (pib2 * 1000000000) / populacao2;
+
+      
+        
+    // Exibição dos Dados da carta 1:
 
     printf("\nCarta 1:\n");
     printf("Estado: %c\n", estado);
@@ -133,12 +122,11 @@ int main(){
     printf("Area: %.2f km²\n", area);
     printf("Pib: %.2f bilhões de reais\n", pib);
     printf("Pontos Turisticos: %d\n", pontoTuristico);
-    printf("Densidade Populacional: %d\n", densidadepopulacional);
-    printf("Pib per capita: %d\n", pibpercapita);
+   
 
-    // Exibição dos Dados da segunda cartas:
+    // Exibição dos Dados da carta 2:
 
-    printf("\nCarta 1:\n");
+    printf("\nCarta 2:\n");
     printf("Estado: %c\n", estado2);
     printf("Codigo: %s\n", codigo2);
     printf("Nome da Cidade: %s\n", nomeCidade2);
@@ -146,11 +134,7 @@ int main(){
     printf("Area: %.2f km²\n", area2);
     printf("Pib: %.2f bilhões de reais\n", pib2);
     printf("Pontos Turisticos: %d\n", pontoTuristico2);
-    printf("Densidade Populacional: %d\n", densidadepopulacional2);
-    printf("Pib per capita: %d\n", pibpercapita2);
-    
-
-    // 
+      
 
     return 0;
 }
