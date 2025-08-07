@@ -13,19 +13,21 @@ int main() {
     
     // Variaveis para primeira carta 
 
-    char estado, codigo[4], nomeCidade[15];
+    char estado[3], codigo[4], nomeCidade[100];
     unsigned int pontoTuristico, ResultadoCarta;
     unsigned long int populacao;
-    float area, pib, densidadepopulacional, pibpercapita,SuperPoder;
+    float area, pib, densidadepopulacional, pibpercapita;
+    double SuperPoder;
     int temp_char;
     
     
     // Variaveis para segunda carta 
 
-    char estado2, codigo2[4], nomeCidade2[15];
+    char estado2[3], codigo2[4], nomeCidade2[100];
     unsigned int  pontoTuristico2, ResultadoCarta2;
     unsigned long int populacao2;
-    float area2, pib2, densidadepopulacional2, pibpercapita2,SuperPoder2;
+    float area2, pib2, densidadepopulacional2, pibpercapita2;
+    double SuperPoder2;
     
     
 
@@ -34,8 +36,8 @@ int main() {
     printf("Numero da Carta 1:\n");
     
 
-    printf("Informe uma letra para o Estado: \n");
-    scanf(" %c", &estado);
+    printf("Informe uma letra para o Estado(Ex: MG):: \n");
+    scanf("%2s", &estado);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
     printf("Informe um código(ex: A01): \n");
@@ -69,8 +71,8 @@ int main() {
     printf("Numero da Carta 2:\n");
     
 
-    printf("Informe uma letra para o Estado: \n");
-    scanf("%c", &estado2);
+    printf("Informe uma letra para o Estado(Ex: MG):: \n");
+    scanf("%2s", &estado2);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
     printf("Informe um código(ex: A01): \n");
@@ -102,22 +104,57 @@ int main() {
 
     // Calcular densidade populacional e PIB per capita CARTA 1
 
-    densidadepopulacional = (float)populacao / area;
-    pibpercapita = (pib * 1000000000.0f) / populacao;
+    if (area != 0) {
+        densidadepopulacional = (float)populacao / area;
+    } else {
+        densidadepopulacional = 0.0f;  // Para evitar divisão por zero
+           printf("Atenção: Área da carta 1 é zero! Densidade populacional será 0.\n");
+    
+        } 
+
+    if (populacao != 0) {
+        pibpercapita = (pib * 1000000000.0f) / populacao;
+    } else {
+        pibpercapita = 0.0f; // Para evitar divisão por zero       
+            printf("Atenção: População da carta 1 é zero! PIB per capita será 0.\n");
+    }
+    
 
     // Calcular densidade populacional e PIB per capita CARTA 2
 
-    densidadepopulacional2 = (float)populacao2 / area2;
-    pibpercapita2 = (pib2 * 1000000000.0f) / populacao2;
+    if (area2 != 0) {
+        densidadepopulacional2 = (float)populacao2 / area2;
+    } else {
+        densidadepopulacional2 = 0.0f;  // Para evitar divisão por zero
+           printf("Atenção: Área da carta 2 é zero! Densidade populacional será 0.\n");
+    
+        } 
+
+    if (populacao2 != 0) {
+        pibpercapita2 = (pib2 * 1000000000.0f) / populacao2;
+    } else {
+        pibpercapita2 = 0.0f; // Para evitar divisão por zero       
+            printf("Atenção: População da carta 2 é zero! PIB per capita será 0.\n");
+    }
 
     
     // Calcular o Super Poder CARTA 1
 
-    SuperPoder = (float)populacao + area + pib +(float)pontoTuristico + pibpercapita + (1.0 / densidadepopulacional);
+    if (densidadepopulacional != 0) {        
+        SuperPoder = (double)populacao + area + pib + (double)pontoTuristico + pibpercapita + (1.0 / densidadepopulacional);    
+    } else {
+        SuperPoder = 0.0;       
+        printf("Atenção: Densidade populacional da Carta 1 é zero. Super Poder pode ser afetado.\n");    
+    }
 
     // Calcular o Super Poder CARTA 2
 
-    SuperPoder2 = (float)populacao2 + area2 + pib2 + (float)pontoTuristico2 + pibpercapita2 + (1.0 / densidadepopulacional2);
+   if (densidadepopulacional2 != 0) {        
+        SuperPoder2 = (double)populacao2 + area2 + pib2 + (double)pontoTuristico2 + pibpercapita2 + (1.0 / densidadepopulacional);    
+    } else {
+        SuperPoder2 = 0.0;       
+        printf("Atenção: Densidade populacional da Carta 2 é zero. Super Poder pode ser afetado.\n");    
+    }
 
     // Comparação das cartas 1 e 2 
 
@@ -151,7 +188,7 @@ int main() {
     printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m(%u)\n", pontoTuristico, ResultadoCarta);
     printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m(%u)\n", densidadepopulacional, ResultadoCarta);
     printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m(%u)\n", pibpercapita, ResultadoCarta);
-    printf("Super Poder: \033[1;33m%'.2f\033[0m(%u)\n\n", SuperPoder, ResultadoCarta);
+    printf("Super Poder: \033[1;33m%.2lf\033[0m(%u)\n\n", SuperPoder, ResultadoCarta);
 
     
 
@@ -168,7 +205,7 @@ int main() {
     printf("Pontos Turísticos: \033[1;31m%u Lugares\033[0m(%u)\n", pontoTuristico2, ResultadoCarta);
     printf("Densidade Populacional: \033[1;31m%'.2f Hab/km²\033[0m(%u)\n", densidadepopulacional2, ResultadoCarta);
     printf("PIB per Capita: \033[1;31m%'.2f R$\033[0m(%u)\n", pibpercapita2, ResultadoCarta);
-    printf("Super Poder: \033[1;33m%'.2f\033[0m(%u)\n\n", SuperPoder2, ResultadoCarta);   
+    printf("Super Poder: \033[1;33m%.2lf\033[0m(%u)\n\n", SuperPoder2, ResultadoCarta);   
     
 
     return 0;
