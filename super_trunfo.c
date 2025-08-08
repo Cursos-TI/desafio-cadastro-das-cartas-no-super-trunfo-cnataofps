@@ -1,14 +1,13 @@
 // Desafio Super Trunfo - Países
-
 #include <stdio.h>
-#include <locale.h>
+#include <string.h>      // Biblioteca para usar strcmp (comparar strings)
 
 
 // Tema 1 - Cadastro das Cartas
 
 int main() {
 
-    setlocale(LC_NUMERIC, "");    
+
 
     
     // Variaveis para primeira carta 
@@ -30,6 +29,11 @@ int main() {
     float area2, pib2, densidadepopulacional2, pibpercapita2;
     double SuperPoder2;
     unsigned int pop_venceu_c2, area_venceu_c2, pib_venceu_c2, pontos_venceu_c2, dens_venceu_c2, pib_pc_venceu_c2, super_poder_venceu_c2;
+
+    // Variaveis para comparação da carta 1 com a carta 2
+
+    char atributo[20];    // Guardar o atributo que iremos fazer a comparação da carta 1 com a carta 2
+    int vencedor;  // 1 = carta 1 Venceu , 2 = Carta 2 Venceu  e 0 = Empate.
     
     
 
@@ -213,7 +217,105 @@ int main() {
     printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m(%u)\n", pibpercapita2, pib_pc_venceu_c2);
     printf("Super Poder: \033[1;33m%.2lf\033[0m(%u)\n\n", SuperPoder2, super_poder_venceu_c2);
 
-       
+
+    // Escolhendo um atributo para comparar
+    // Mude essa linha abaixo para comparar por outro atributo.
+
+    strcpy(atributo,"pib");  // Podendo ser os seguintes atributos: "População", "Area", "Densidade", "Pibpercapita".
+
+    // Comparando as Cartas
+
+    if (strcmp(atributo,"Populacao") == 0) {
+
+        printf("Atributo: Populacao\n");
+        printf("%s: %ld hab.\n",nomeCidade, populacao);
+        printf("%s: %ld hab.\n",nomeCidade2, populacao2);
+
+        if (populacao > populacao2) {
+            vencedor = 1;
+        }else if (populacao2 > populacao) {
+            vencedor = 2;
+        }else {
+            vencedor = 0; // Empate
+        }
+    }
+    else if (strcmp(atributo,"Area") == 0) {
+
+        printf("Atributo: PIB\n");
+        printf("%s: %f hab.\n",nomeCidade, area);
+        printf("%s: %f hab.\n",nomeCidade2, area2);
+
+        if (area > area2) {
+            vencedor = 1;
+        }else if(area2 > area) {
+            vencedor = 2;
+        }else {
+            vencedor = 0; // Empate
+
+        }
+    }
+    else if (strcmp(atributo,"PIB") == 0) {
+
+        printf("Atributo: PIB\n");
+        printf("%s: %f hab.\n",nomeCidade, pib);
+        printf("%s: %f hab.\n",nomeCidade2, pib2);
+
+        if (pib> pib2) {
+            vencedor = 1;
+        }else if(pib2 > pib) {
+            vencedor = 2;
+        }else {
+            vencedor = 0; // Empate
+
+        }
+    }
+    else if (strcmp(atributo,"Densidade") == 0) {
+
+        printf("Atributo: Densidade\n");
+        printf("%s: %f hab.\n",nomeCidade, densidadepopulacional);
+        printf("%s: %f hab.\n",nomeCidade2, densidadepopulacional2);
+
+        if (densidadepopulacional < densidadepopulacional2){
+            vencedor = 1;
+        }else if(densidadepopulacional2 < densidadepopulacional) {
+            vencedor = 2;
+        }else {
+            vencedor = 0; // Empate
+
+        }
+    }
+    else if (strcmp(atributo,"Pib_per_capita") == 0) {
+
+        printf("Atributo: Pib per capita\n");
+        printf("%s: %f hab.\n",nomeCidade, pibpercapita);
+        printf("%s: %f hab.\n",nomeCidade2, pibpercapita2);
+
+        if (pibpercapita > pibpercapita2) {
+            vencedor = 1;
+        }else if(pibpercapita2 > pibpercapita) {
+            vencedor = 2;
+        }else {
+            vencedor = 0; // Empate
+
+        }
+    }
+    else {
+        printf("Atributo invalido, Tente Novamente!\n");
+        return 1; // Terminar o programa mostrando o erro.
+    }
+
+    // Mostrando o vencedor
+
+    if(vencedor == 1) {
+        printf("Vencedor: %s\n", nomeCidade);
+
+    }else if (vencedor == 2) {
+        printf("Vencedor: %s\n", nomeCidade2);
+
+    }else {
+        printf("Empate\n");
+    }
+    
 
     return 0;
 }
