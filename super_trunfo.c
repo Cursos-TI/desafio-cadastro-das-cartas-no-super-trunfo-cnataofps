@@ -39,7 +39,7 @@ int main() {
     
 
     printf("Informe uma letra para o Estado(Ex: MG):: \n");
-    scanf("%2s", &estado);
+    scanf("%2s", estado);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
     printf("Informe um código(ex: A01): \n");
@@ -47,7 +47,7 @@ int main() {
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Nome da cidade(sem espaços): \n");
-    scanf("%14s", nomeCidade);
+    scanf("%99s", nomeCidade);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Populacao: \n");
@@ -74,7 +74,7 @@ int main() {
     
 
     printf("Informe uma letra para o Estado(Ex: MG):: \n");
-    scanf("%2s", &estado2);
+    scanf("%2s", estado2);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
 
     printf("Informe um código(ex: A01): \n");
@@ -82,7 +82,7 @@ int main() {
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Nome da cidade(sem espaços): \n");
-    scanf("%14s", nomeCidade2);
+    scanf("%99s", nomeCidade2);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);
 
     printf("Populacao: \n");
@@ -184,10 +184,10 @@ int main() {
 
     printf("\n\n \033[1;34m Informações_Da_Carta 1: \033[0m \n\n");
 
-    printf("Estado: \033[1;34m%c\033[0m(%u)\n", estado);
-    printf("Código: \033[1;34m%s\033[0m(%u)\n", codigo);
-    printf("Cidade: \033[1;34m%s\033[0m(%u)\n", nomeCidade);
-    printf("População: \033[1;34m%lu'\033[0m(%u)\n", populacao, pop_venceu_c1);
+    printf("Estado: \033[1;34m%s\033[0m\n", estado);
+    printf("Código: \033[1;34m%s\033[0m\n", codigo);
+    printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade);
+    printf("População: \033[1;34m%lu\033[0m(%u)\n", populacao, pop_venceu_c1);
     printf("Área: \033[1;34m%'.2fkm²\033[0m(%u)\n", area, area_venceu_c1);
     printf("PIB: \033[1;34m%'.2f Bi\033[0m (%u)\n", pib, pib_venceu_c1);
     printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m(%u)\n", pontoTuristico, pontos_venceu_c1);
@@ -202,10 +202,10 @@ int main() {
 
     printf("\n\n \033[1;31m Informações_Da_Carta 2: \033[0m \n\n");
 
-    printf("Estado: \033[1;34m%c\033[0m(%u)\n", estado2);
-    printf("Código: \033[1;34m%s\033[0m(%u)\n", codigo2);
-    printf("Cidade: \033[1;34m%s\033[0m(%u)\n", nomeCidade2);
-    printf("População: \033[1;34m%lu'\033[0m(%u)\n", populacao2, pop_venceu_c2);
+    printf("Estado: \033[1;34m%s\033[0m\n", estado2);
+    printf("Código: \033[1;34m%s\033[0m\n", codigo2);
+    printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade2);
+    printf("População: \033[1;34m%lu\033[0m(%u)\n", populacao2, pop_venceu_c2);
     printf("Área: \033[1;34m%'.2fkm²\033[0m(%u)\n", area2, area_venceu_c2);
     printf("PIB: \033[1;34m%'.2f Bi\033[0m (%u)\n", pib2, pib_venceu_c2);
     printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m(%u)\n", pontoTuristico2, pontos_venceu_c2);
