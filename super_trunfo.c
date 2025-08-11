@@ -1,15 +1,7 @@
-// Desafio Super Trunfo - Países
 #include <stdio.h>
-#include <string.h>      // Biblioteca para usar strcmp (comparar strings)
-
-
-// Tema 1 - Cadastro das Cartas
 
 int main() {
 
-
-
-    
     // Variaveis para primeira carta 
 
     char estado[3], codigo[4], nomeCidade[100];
@@ -18,7 +10,7 @@ int main() {
     float area, pib, densidadepopulacional, pibpercapita;
     double SuperPoder;
     int temp_char;
-    unsigned int pop_venceu_c1, area_venceu_c1, pib_venceu_c1, pontos_venceu_c1, dens_venceu_c1, pib_pc_venceu_c1, super_poder_venceu_c1;
+    unsigned int resultado_pop, resultado_area, resultado_pib, resultado_pontos, resultado_dens, resultado_pib_pc, resultado_super_poder;
     
     
     // Variaveis para segunda carta 
@@ -28,20 +20,11 @@ int main() {
     unsigned long int populacao2;
     float area2, pib2, densidadepopulacional2, pibpercapita2;
     double SuperPoder2;
-    unsigned int pop_venceu_c2, area_venceu_c2, pib_venceu_c2, pontos_venceu_c2, dens_venceu_c2, pib_pc_venceu_c2, super_poder_venceu_c2;
-
-    // Variaveis para comparação da carta 1 com a carta 2
-
-    char atributo[20];    // Guardar o atributo que iremos fazer a comparação da carta 1 com a carta 2
-    int vencedor;  // 1 = carta 1 Venceu , 2 = Carta 2 Venceu  e 0 = Empate.
     
-    
+        
+    // Entrada de dados para primeira carta
 
-    // Solicitacoes de dados para primeira carta
-
-    printf("Numero da Carta 1:\n");
-    
-
+    printf("Numero da Carta 1:\n");   
     printf("Informe uma letra para o Estado(Ex: MG):: \n");
     scanf("%2s", estado);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
@@ -72,11 +55,9 @@ int main() {
 
     
     
-    // Solicitacoes de dados para segunda carta
+    // Entrada de dados para segunda carta
 
     printf("Numero da Carta 2:\n");
-    
-
     printf("Informe uma letra para o Estado(Ex: MG):: \n");
     scanf("%2s", estado2);
     while ((temp_char = getchar()) != '\n' && temp_char != EOF);   
@@ -108,214 +89,78 @@ int main() {
 
 
 
-    // Calcular densidade populacional e PIB per capita CARTA 1
+    // Calcular densidade populacional e PIB per capita CARTA 1 e CARTA 2
 
-    if (area != 0) {
-        densidadepopulacional = (float)populacao / area;
-    } else {
-        densidadepopulacional = 0.0f;  // Para evitar divisão por zero
-           printf("Atenção: Área da carta 1 é zero! Densidade populacional será 0.\n");
+    densidadepopulacional = (float)populacao / area;
+    pibpercapita = (pib * 1000000000.0f) / populacao;     
+    densidadepopulacional2 = (float)populacao2 / area2;
+    pibpercapita2 = (pib2 * 1000000000.0f) / populacao2;
+   
+             
+    // Calcular o Super Poder CARTA 1 E CARTA 2
+
+    SuperPoder = (double)populacao + area + pib + (double)pontoTuristico + pibpercapita + (1.0 / densidadepopulacional);       
+    SuperPoder2 = (double)populacao2 + area2 + pib2 + (double)pontoTuristico2 + pibpercapita2 + (1.0 / densidadepopulacional2);    
     
-        } 
+    // Comparação das cartas
 
-    if (populacao != 0) {
-        pibpercapita = (pib * 1000000000.0f) / populacao;
-    } else {
-        pibpercapita = 0.0f; // Para evitar divisão por zero       
-            printf("Atenção: População da carta 1 é zero! PIB per capita será 0.\n");
-    }
-    
-
-    // Calcular densidade populacional e PIB per capita CARTA 2
-
-    if (area2 != 0) {
-        densidadepopulacional2 = (float)populacao2 / area2;
-    } else {
-        densidadepopulacional2 = 0.0f;  // Para evitar divisão por zero
-           printf("Atenção: Área da carta 2 é zero! Densidade populacional será 0.\n");
-    
-        } 
-
-    if (populacao2 != 0) {
-        pibpercapita2 = (pib2 * 1000000000.0f) / populacao2;
-    } else {
-        pibpercapita2 = 0.0f; // Para evitar divisão por zero       
-            printf("Atenção: População da carta 2 é zero! PIB per capita será 0.\n");
-    }
+    resultado_pop = populacao > populacao2;
+    resultado_area = area > area2;
+    resultado_pib = pib > pib2;
+    resultado_pontos = pontoTuristico > pontoTuristico2;
+    resultado_dens = densidadepopulacional < densidadepopulacional2;
+    resultado_pib_pc = pibpercapita > pibpercapita2;
+    resultado_super_poder = SuperPoder > SuperPoder2;
 
     
-    // Calcular o Super Poder CARTA 1
-
-    if (densidadepopulacional != 0) {        
-        SuperPoder = (double)populacao + area + pib + (double)pontoTuristico + pibpercapita + (1.0 / densidadepopulacional);    
-    } else {
-        SuperPoder = 0.0;       
-        printf("Atenção: Densidade populacional da Carta 1 é zero. Super Poder pode ser afetado.\n");    
-    }
-
-    // Calcular o Super Poder CARTA 2
-
-   if (densidadepopulacional2 != 0) {        
-        SuperPoder2 = (double)populacao2 + area2 + pib2 + (double)pontoTuristico2 + pibpercapita2 + (1.0 / densidadepopulacional2);    
-    } else {
-        SuperPoder2 = 0.0;       
-        printf("Atenção: Densidade populacional da Carta 2 é zero. Super Poder pode ser afetado.\n");    
-    }
-
-    // Comparação das cartas 1 
-
-    pop_venceu_c1 = populacao > populacao2;
-    area_venceu_c1 = area > area2;
-    pib_venceu_c1 = pib > pib2;
-    pontos_venceu_c1 = pontoTuristico > pontoTuristico2;
-    dens_venceu_c1 = densidadepopulacional < densidadepopulacional2;
-    pib_pc_venceu_c1 = pibpercapita > pibpercapita2;
-    super_poder_venceu_c1 = SuperPoder > SuperPoder2;
-
-    // Comparação das cartas 2
-
-    pop_venceu_c2 = populacao2 > populacao;
-    area_venceu_c2 = area2 > area;
-    pib_venceu_c2 = pib2 > pib;
-    pontos_venceu_c2 = pontoTuristico2 > pontoTuristico;
-    dens_venceu_c2 = densidadepopulacional2 < densidadepopulacional;
-    pib_pc_venceu_c2 = pibpercapita2 > pibpercapita;
-    super_poder_venceu_c2 = SuperPoder2 > SuperPoder;
-
-
-    // Exibição dos Resultados das comparaçoes da Carta 1 
-    // Resultado '1' geralmente significa vence e '0' significa Derrota/empate
+    // Exibição dos Resultados Carta 1 
+    
 
     printf("\n\n \033[1;34m Informações_Da_Carta 1: \033[0m \n\n");
-
     printf("Estado: \033[1;34m%s\033[0m\n", estado);
     printf("Código: \033[1;34m%s\033[0m\n", codigo);
     printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade);
-    printf("População: \033[1;34m%lu\033[0m(%u)\n", populacao, pop_venceu_c1);
-    printf("Área: \033[1;34m%'.2fkm²\033[0m(%u)\n", area, area_venceu_c1);
-    printf("PIB: \033[1;34m%'.2f Bi\033[0m (%u)\n", pib, pib_venceu_c1);
-    printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m(%u)\n", pontoTuristico, pontos_venceu_c1);
-    printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m(%u)\n", densidadepopulacional, dens_venceu_c1);
-    printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m(%u)\n", pibpercapita, pib_pc_venceu_c1);
-    printf("Super Poder: \033[1;33m%.2lf\033[0m(%u)\n\n", SuperPoder, super_poder_venceu_c1);
+    printf("População: \033[1;34m%lu\033[0m\n", populacao);
+    printf("Área: \033[1;34m%'.2fkm²\033[0m\n", area);
+    printf("PIB: \033[1;34m%'.2f Bi\033[0m \n", pib);
+    printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m\n", pontoTuristico);
+    printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m\n", densidadepopulacional);
+    printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m\n", pibpercapita);
+    printf("Super Poder: \033[1;33m%.2lf\033[0m\n\n", SuperPoder);
 
     
 
-   // Exibição dos Resultados das comparaçoes da Carta 2
-   // Resultado '1' geralmente significa vence e '0' significa Derrota/empate
+   // Exibição dos Resultados Carta 2
+   
 
     printf("\n\n \033[1;31m Informações_Da_Carta 2: \033[0m \n\n");
-
     printf("Estado: \033[1;34m%s\033[0m\n", estado2);
     printf("Código: \033[1;34m%s\033[0m\n", codigo2);
     printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade2);
-    printf("População: \033[1;34m%lu\033[0m(%u)\n", populacao2, pop_venceu_c2);
-    printf("Área: \033[1;34m%'.2fkm²\033[0m(%u)\n", area2, area_venceu_c2);
-    printf("PIB: \033[1;34m%'.2f Bi\033[0m (%u)\n", pib2, pib_venceu_c2);
-    printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m(%u)\n", pontoTuristico2, pontos_venceu_c2);
-    printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m(%u)\n", densidadepopulacional2, dens_venceu_c2);
-    printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m(%u)\n", pibpercapita2, pib_pc_venceu_c2);
-    printf("Super Poder: \033[1;33m%.2lf\033[0m(%u)\n\n", SuperPoder2, super_poder_venceu_c2);
+    printf("População: \033[1;34m%lu\033[0m\n", populacao2);
+    printf("Área: \033[1;34m%'.2fkm²\033[0m\n", area2);
+    printf("PIB: \033[1;34m%'.2f Bi\033[0m \n", pib2);
+    printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m\n", pontoTuristico2);
+    printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m\n", densidadepopulacional2);
+    printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m\n", pibpercapita2);
+    printf("Super Poder: \033[1;33m%.2lf\033[0m\n\n", SuperPoder2);
 
-
-    // Escolhendo um atributo para comparar
-    // Mude essa linha abaixo para comparar por outro atributo.
-
-    strcpy(atributo,"pib");  // Podendo ser os seguintes atributos: "População", "Area", "Densidade", "Pibpercapita".
-
+       
     // Comparando as Cartas
+    // Mude essa linha abaixo para comparar por outro atributo: "População", "Area", "Densidade", "Pibpercapita".
 
-    if (strcmp(atributo,"Populacao") == 0) {
+    printf("\n \033[1;31m Comparação das Cartas: \033[0m \n");
+    printf("\n\n \033[1;31m O Atributo usado será População!! \033[0m \n\n");
 
-        printf("Atributo: Populacao\n");
-        printf("%s: %ld hab.\n",nomeCidade, populacao);
-        printf("%s: %ld hab.\n",nomeCidade2, populacao2);
+    printf("%s: %ld hab.\n",nomeCidade, populacao);
+    printf("%s: %ld hab.\n",nomeCidade2, populacao2);
 
-        if (populacao > populacao2) {
-            vencedor = 1;
+           
+       if (populacao > populacao2) {
+            printf("A Carta 1 Venceu");
         }else if (populacao2 > populacao) {
-            vencedor = 2;
+            printf("A Carta 2 Venceu");
         }else {
-            vencedor = 0; // Empate
+            printf("Ocorreu um Empate");
         }
     }
-    else if (strcmp(atributo,"Area") == 0) {
-
-        printf("Atributo: PIB\n");
-        printf("%s: %f hab.\n",nomeCidade, area);
-        printf("%s: %f hab.\n",nomeCidade2, area2);
-
-        if (area > area2) {
-            vencedor = 1;
-        }else if(area2 > area) {
-            vencedor = 2;
-        }else {
-            vencedor = 0; // Empate
-
-        }
-    }
-    else if (strcmp(atributo,"PIB") == 0) {
-
-        printf("Atributo: PIB\n");
-        printf("%s: %f hab.\n",nomeCidade, pib);
-        printf("%s: %f hab.\n",nomeCidade2, pib2);
-
-        if (pib> pib2) {
-            vencedor = 1;
-        }else if(pib2 > pib) {
-            vencedor = 2;
-        }else {
-            vencedor = 0; // Empate
-
-        }
-    }
-    else if (strcmp(atributo,"Densidade") == 0) {
-
-        printf("Atributo: Densidade\n");
-        printf("%s: %f hab.\n",nomeCidade, densidadepopulacional);
-        printf("%s: %f hab.\n",nomeCidade2, densidadepopulacional2);
-
-        if (densidadepopulacional < densidadepopulacional2){
-            vencedor = 1;
-        }else if(densidadepopulacional2 < densidadepopulacional) {
-            vencedor = 2;
-        }else {
-            vencedor = 0; // Empate
-
-        }
-    }
-    else if (strcmp(atributo,"Pib_per_capita") == 0) {
-
-        printf("Atributo: Pib per capita\n");
-        printf("%s: %f hab.\n",nomeCidade, pibpercapita);
-        printf("%s: %f hab.\n",nomeCidade2, pibpercapita2);
-
-        if (pibpercapita > pibpercapita2) {
-            vencedor = 1;
-        }else if(pibpercapita2 > pibpercapita) {
-            vencedor = 2;
-        }else {
-            vencedor = 0; // Empate
-
-        }
-    }
-    else {
-        printf("Atributo invalido, Tente Novamente!\n");
-        return 1; // Terminar o programa mostrando o erro.
-    }
-
-    // Mostrando o vencedor
-
-    if(vencedor == 1) {
-        printf("Vencedor: %s\n", nomeCidade);
-
-    }else if (vencedor == 2) {
-        printf("Vencedor: %s\n", nomeCidade2);
-
-    }else {
-        printf("Empate\n");
-    }
-    
-
-    return 0;
-}
