@@ -120,13 +120,13 @@ int main() {
     // Exibição dos Resultados Carta 1 
     
 
-    printf("\n\n \033[1;34m Informações_Da_Carta 1: \033[0m \n\n");
+    printf("\n\n \033[1;34m Informações Da Carta 1: \033[0m \n\n");
     printf("Estado: \033[1;34m%s\033[0m\n", estado);
     printf("Código: \033[1;34m%s\033[0m\n", codigo);
     printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade);
     printf("População: \033[1;34m%lu\033[0m\n", populacao);
-    printf("Área: \033[1;34m%'.2fkm²\033[0m\n", area);
-    printf("PIB: \033[1;34m%'.2f Bi\033[0m \n", pib);
+    printf("Área: \033[1;34m%.2fkm²\033[0m\n", area);
+    printf("PIB: \033[1;34m%.2f Bi\033[0m \n", pib);
     printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m\n", pontoTuristico);
     printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m\n", densidadepopulacional);
     printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m\n", pibpercapita);
@@ -137,13 +137,13 @@ int main() {
    // Exibição dos Resultados Carta 2
    
 
-    printf("\n\n \033[1;31m Informações_Da_Carta 2: \033[0m \n\n");
+    printf("\n\n \033[1;31m Informações Da Carta 2: \033[0m \n\n");
     printf("Estado: \033[1;34m%s\033[0m\n", estado2);
     printf("Código: \033[1;34m%s\033[0m\n", codigo2);
     printf("Cidade: \033[1;34m%s\033[0m\n", nomeCidade2);
     printf("População: \033[1;34m%lu\033[0m\n", populacao2);
-    printf("Área: \033[1;34m%'.2fkm²\033[0m\n", area2);
-    printf("PIB: \033[1;34m%'.2f Bi\033[0m \n", pib2);
+    printf("Área: \033[1;34m%.2fkm²\033[0m\n", area2);
+    printf("PIB: \033[1;34m%.2f Bi\033[0m \n", pib2);
     printf("Pontos Turísticos: \033[1;34m%u Lugares\033[0m\n", pontoTuristico2);
     printf("Densidade Populacional: \033[1;34m%'.2f Hab/km²\033[0m\n", densidadepopulacional2);
     printf("PIB per Capita: \033[1;34m%'.2f R$\033[0m\n", pibpercapita2);
@@ -152,7 +152,7 @@ int main() {
        
     
     // Menu Interativo para comparar cartas.
-    // Mude essa linha abaixo para comparar por outro atributo: "População", "Area", "Densidade", "Pibpercapita"
+    
 
     printf("\n \033[1;31m Menu Comparação das Cartas: \033[0m \n");
     printf("[1] - Comparar por População \n");
@@ -160,7 +160,8 @@ int main() {
     printf("[3] - Comparar por Pib \n");
     printf("[4] - Comparar por Pontos Turisticos \n");
     printf("[5] - Comparar por Densidade Demográfica \n");
-    scanf(" %i", &menu);
+
+    scanf("%i", &menu);
     switch(menu) {
 
     case 1:
@@ -181,8 +182,8 @@ int main() {
     case 2:
 
     printf ("\n \033[1;31m O Atributo usado será Área \033[0m \n");
-    printf ("%s: %ld hab.\n",nomeCidade, area);
-    printf ("%s: %ld hab.\n",nomeCidade2,area2);
+    printf ("%s: %.2f Km².\n",nomeCidade, area);
+    printf ("%s: %.2f Km².\n",nomeCidade2,area2);
       
        if (area> area2) {
             printf("A Carta 1 Venceu");
@@ -196,8 +197,8 @@ int main() {
     case 3:
 
     printf ("\n \033[1;31m O Atributo usado será PIB \033[0m \n");
-    printf ("%s: %ld hab.\n",nomeCidade, pib);
-    printf ("%s: %ld hab.\n",nomeCidade2,pib2);
+    printf ("%s: %.2f hab.\n",nomeCidade, pib);
+    printf ("%s: %.2f hab.\n",nomeCidade2,pib2);
       
        if (pib> pib2) {
             printf("A Carta 1 Venceu");
@@ -211,8 +212,8 @@ int main() {
     case 4:
 
     printf ("\n \033[1;31m O Atributo usado será Pontos Turísticos \033[0m \n");
-    printf ("%s: %ld hab.\n",nomeCidade, pontoTuristico);
-    printf ("%s: %ld hab.\n",nomeCidade2, pontoTuristico2);
+    printf ("%s: %u hab.\n",nomeCidade, pontoTuristico);
+    printf ("%s: %u hab.\n",nomeCidade2, pontoTuristico2);
       
        if (pontoTuristico> pontoTuristico2) {
             printf("A Carta 1 Venceu");
@@ -226,12 +227,12 @@ int main() {
     case 5:
 
     printf("\n \033[1;31m O Atributo usado será Densidade Demográfica \033[0m \n");
-    printf ("%s: %ld hab.\n",nomeCidade, densidadepopulacional);
-    printf ("%s: %ld hab.\n",nomeCidade2, densidadepopulacional2);
+    printf ("%s: %.2f hab.\n",nomeCidade, densidadepopulacional);
+    printf ("%s: %.2f hab.\n",nomeCidade2, densidadepopulacional2);
       
-       if (densidadepopulacional > densidadepopulacional2) {
+       if (densidadepopulacional < densidadepopulacional2) {
             printf("A Carta 1 Venceu");
-        }else if (densidadepopulacional2 > densidadepopulacional) {
+        }else if (densidadepopulacional2 < densidadepopulacional) {
             printf("A Carta 2 Venceu");
         }else {
             printf("Ocorreu um Empate");
