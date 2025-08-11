@@ -5,7 +5,7 @@ int main() {
     // Variaveis para primeira carta 
 
     char estado[3], codigo[4], nomeCidade[100];
-    unsigned int pontoTuristico, ResultadoCarta;
+    unsigned int pontoTuristico;
     unsigned long int populacao;
     float area, pib, densidadepopulacional, pibpercapita;
     double SuperPoder;
@@ -16,10 +16,14 @@ int main() {
     // Variaveis para segunda carta 
 
     char estado2[3], codigo2[4], nomeCidade2[100];
-    unsigned int  pontoTuristico2, ResultadoCarta2;
+    unsigned int  pontoTuristico2;
     unsigned long int populacao2;
     float area2, pib2, densidadepopulacional2, pibpercapita2;
     double SuperPoder2;
+
+    // Variavel para o Menu de comparação
+
+    int menu;
     
         
     // Entrada de dados para primeira carta
@@ -146,16 +150,25 @@ int main() {
     printf("Super Poder: \033[1;33m%.2lf\033[0m\n\n", SuperPoder2);
 
        
-    // Comparando as Cartas
-    // Mude essa linha abaixo para comparar por outro atributo: "População", "Area", "Densidade", "Pibpercapita".
+    
+    // Menu Interativo para comparar cartas.
+    // Mude essa linha abaixo para comparar por outro atributo: "População", "Area", "Densidade", "Pibpercapita"
 
-    printf("\n \033[1;31m Comparação das Cartas: \033[0m \n");
-    printf("\n\n \033[1;31m O Atributo usado será População!! \033[0m \n\n");
+    printf("\n \033[1;31m Menu Comparação das Cartas: \033[0m \n");
+    printf("[1] - Comparar por População \n");
+    printf("[2] - Comparar por Área \n");
+    printf("[3] - Comparar por Pib \n");
+    printf("[4] - Comparar por Pontos Turisticos \n");
+    printf("[5] - Comparar por Densidade Demográfica \n");
+    scanf(" %i", &menu);
+    switch(menu) {
 
-    printf("%s: %ld hab.\n",nomeCidade, populacao);
-    printf("%s: %ld hab.\n",nomeCidade2, populacao2);
+    case 1:
 
-           
+    printf ("\n \033[1;31m O Atributo usado será População \033[0m \n");
+    printf ("%s: %ld hab.\n",nomeCidade, populacao);
+    printf ("%s: %ld hab.\n",nomeCidade2, populacao2);
+      
        if (populacao > populacao2) {
             printf("A Carta 1 Venceu");
         }else if (populacao2 > populacao) {
@@ -163,4 +176,74 @@ int main() {
         }else {
             printf("Ocorreu um Empate");
         }
+        break;  
+        
+    case 2:
+
+    printf ("\n \033[1;31m O Atributo usado será Área \033[0m \n");
+    printf ("%s: %ld hab.\n",nomeCidade, area);
+    printf ("%s: %ld hab.\n",nomeCidade2,area2);
+      
+       if (area> area2) {
+            printf("A Carta 1 Venceu");
+        }else if (area2 > area) {
+            printf("A Carta 2 Venceu");
+        }else {
+            printf("Ocorreu um Empate");
+        }
+        break; 
+
+    case 3:
+
+    printf ("\n \033[1;31m O Atributo usado será PIB \033[0m \n");
+    printf ("%s: %ld hab.\n",nomeCidade, pib);
+    printf ("%s: %ld hab.\n",nomeCidade2,pib2);
+      
+       if (pib> pib2) {
+            printf("A Carta 1 Venceu");
+        }else if (pib2 > pib) {
+            printf("A Carta 2 Venceu");
+        }else {
+            printf("Ocorreu um Empate");
+        }
+        break; 
+
+    case 4:
+
+    printf ("\n \033[1;31m O Atributo usado será Pontos Turísticos \033[0m \n");
+    printf ("%s: %ld hab.\n",nomeCidade, pontoTuristico);
+    printf ("%s: %ld hab.\n",nomeCidade2, pontoTuristico2);
+      
+       if (pontoTuristico> pontoTuristico2) {
+            printf("A Carta 1 Venceu");
+        }else if (pontoTuristico2 > pontoTuristico) {
+            printf("A Carta 2 Venceu");
+        }else {
+            printf("Ocorreu um Empate");
+        }
+        break; 
+        
+    case 5:
+
+    printf("\n \033[1;31m O Atributo usado será Densidade Demográfica \033[0m \n");
+    printf ("%s: %ld hab.\n",nomeCidade, densidadepopulacional);
+    printf ("%s: %ld hab.\n",nomeCidade2, densidadepopulacional2);
+      
+       if (densidadepopulacional > densidadepopulacional2) {
+            printf("A Carta 1 Venceu");
+        }else if (densidadepopulacional2 > densidadepopulacional) {
+            printf("A Carta 2 Venceu");
+        }else {
+            printf("Ocorreu um Empate");
+        }
+        break;     
+
+    default:
+            printf("Número inválido, por favor tentar novamente");
+        break;
+    
+
+
     }
+    return 0;
+}
